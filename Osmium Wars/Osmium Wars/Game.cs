@@ -40,8 +40,6 @@ namespace OW
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = true;
 
-            this.IsMouseVisible = true;
-
             // Create one player instance.
             Player player = new Player(this);
             this.Components.Add(player);
