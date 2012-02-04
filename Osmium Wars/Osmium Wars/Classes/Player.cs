@@ -15,6 +15,7 @@ namespace OW
     class Player : Infantry
     {
         private static int SPEED = 10;
+        private double angle;
         public Player(Game game) : base(game)
         {
             this.game = game;
@@ -29,6 +30,8 @@ namespace OW
         public override void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
+            MouseState mouseState = Mouse.GetState();
+
             //Implement movement with WASD controls
             if (keyState.IsKeyDown(Keys.W))
             {
@@ -46,7 +49,12 @@ namespace OW
             {
                 this.position.X += SPEED;
             }
-        }
-                
+
+            //Now make him look at the direction of the mouse
+             
+            angle = Math.Atan2((double)mouseState.Y - this.position.Y, (double)mouseState.X - this.position.X); //this will return the angle(in radians) from sprite to mouse.
+            this.faceposition.X = (float)Math.Cos(angle);
+            this.faceposition.Y = (float)Math.Sin(angle);
+        }              
     }
 }
