@@ -39,6 +39,7 @@ namespace OW
             // Create one player instance.
             Player player = new Player(this);
             this.Components.Add(player);
+            this.IsMouseVisible = true;
         }
 
 
