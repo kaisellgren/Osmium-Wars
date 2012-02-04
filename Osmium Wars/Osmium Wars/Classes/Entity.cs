@@ -20,6 +20,7 @@ namespace OW
         protected Model model;
 
         protected Vector3 position = Vector3.Zero;
+        protected Vector3 faceposition = Vector3.Forward;
         protected float rotation = 0.0f;
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace OW
                     effect.EnableDefaultLighting();
                     effect.AmbientLightColor = new Vector3(255, 255, 255);
                     effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateScale(0.1f, 0.1f, 0.1f) * Matrix.CreateRotationY(this.rotation) * Matrix.CreateTranslation(this.position);
-                    effect.View = Matrix.CreateLookAt(this.game.cameraPosition, Vector3.Zero, Vector3.Forward);
+                    effect.View = Matrix.CreateLookAt(this.game.cameraPosition, Vector3.Zero, faceposition);
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), this.game.aspectRatio, 1.0f, 10000.0f);
                 }
                 // Draw the mesh, using the effects set above.
