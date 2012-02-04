@@ -35,19 +35,23 @@ namespace OW
             //Implement movement with WASD controls
             if (keyState.IsKeyDown(Keys.W))
             {
-                this.position.Z -= SPEED;
+                angle = Math.Atan2((double)mouseState.Y - this.position.Y, (double)mouseState.X - this.position.X); //this will return the angle(in radians) from sprite to mouse.
+                this.position.Z -= SPEED* (float)Math.Cos(angle);
             }
             else if (keyState.IsKeyDown(Keys.S))
             {
-                this.position.Z += SPEED;
+                angle = Math.Atan2((double)mouseState.Y - this.position.Y, (double)mouseState.X - this.position.X); //this will return the angle(in radians) from sprite to mouse.
+                this.position.Z += SPEED * (float)Math.Cos(angle);
             }
             else if (keyState.IsKeyDown(Keys.A))
             {
-                this.position.X -= SPEED;
+                angle = Math.Atan2((double)mouseState.Y - this.position.Y, (double)mouseState.X - this.position.X); //this will return the angle(in radians) from sprite to mouse.
+                this.position.X -= SPEED * (float)Math.Sin(angle);
             }
             else if (keyState.IsKeyDown(Keys.D))
             {
-                this.position.X += SPEED;
+                angle = Math.Atan2((double)mouseState.Y - this.position.Y, (double)mouseState.X - this.position.X); //this will return the angle(in radians) from sprite to mouse.
+                this.position.X += SPEED * (float)Math.Sin(angle);
             }
 
             //Now make him look at the direction of the mouse
