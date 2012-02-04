@@ -34,18 +34,18 @@ namespace OW
         public Game()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = "Content";          
 
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = true;
 
-            this.IsMouseVisible = true;
-
             // Create one player instance.
             Player player = new Player(this);
             this.Components.Add(player);
+            this.IsMouseVisible = true;
         }
+
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
