@@ -7,14 +7,9 @@ namespace OW
 {
     class Infantry : Entity
     {
-        public Infantry()
+        public Infantry(Game game) : base(game)
         {
-       
-        }
-
-        public override void Draw()
-        {
-        
+            this.game = game;
         }
     }
 }

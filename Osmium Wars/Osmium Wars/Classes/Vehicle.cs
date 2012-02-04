@@ -7,9 +7,9 @@ namespace OW
 {
     class Vehicle : Entity
     {
-        public override void Draw()
+        public Vehicle(Game game) : base(game)
         {
-
+            this.game = game;
         }
     }
 }
