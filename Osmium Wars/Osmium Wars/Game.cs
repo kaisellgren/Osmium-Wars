@@ -18,7 +18,7 @@ namespace OW
     {
         GraphicsDeviceManager graphics;
         public float aspectRatio;
-        public Vector3 cameraPosition = new Vector3(0.0f, 850.0f, 300.0f);
+        public Vector3 cameraPosition = new Vector3(0.0f, 1000.0f, 300.0f);
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,6 +35,10 @@ namespace OW
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.IsFullScreen = true;
 
             // Create one player instance.
             Player player = new Player(this);
