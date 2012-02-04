@@ -34,12 +34,13 @@ namespace OW
         public Game()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = "Content";          
 
             // Create one player instance.
             Player player = new Player(this);
             this.Components.Add(player);
         }
+
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
