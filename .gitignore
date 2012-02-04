@@ -1,3 +1,9 @@
 Debug/
 Release/
 *.suo
+*.fbx
+*.mp3
+*.wav
+*.dll
+*.3ds
+*.max
