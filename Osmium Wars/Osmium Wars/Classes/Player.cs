@@ -14,6 +14,7 @@ namespace OW
 {
     class Player : Infantry
     {
+        private static int SPEED = 10;
         public Player(Game game) : base(game)
         {
             this.game = game;
@@ -24,5 +25,28 @@ namespace OW
             this.model = this.game.Content.Load<Model>("Units/Player");
             //this.rotation += (float)gameTime.TotalGameTime.Seconds / 100;
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            KeyboardState keyState = Keyboard.GetState();
+            //Implement movement with WASD controls
+            if (keyState.IsKeyDown(Keys.W))
+            {
+                this.position.Z -= SPEED;
+            }
+            else if (keyState.IsKeyDown(Keys.S))
+            {
+                this.position.Z += SPEED;
+            }
+            else if (keyState.IsKeyDown(Keys.A))
+            {
+                this.position.X -= SPEED;
+            }
+            else if (keyState.IsKeyDown(Keys.D))
+            {
+                this.position.X += SPEED;
+            }
+        }
+                
     }
 }
