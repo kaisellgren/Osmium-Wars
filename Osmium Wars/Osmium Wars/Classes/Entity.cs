@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OW
 {
-    abstract class Entity
+    abstract class Entity : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public abstract void Draw();
     }
