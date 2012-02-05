@@ -51,6 +51,11 @@ namespace OW
 
             // Copy any parent transforms.
             Matrix[] transforms = new Matrix[this.model.Bones.Count];
+
+            ModelBone bone = this.model.Bones["AF_Helmet_Xmas_D.bmp"];
+            //Matrix boneTransform = bone.Transform;
+            bone.Transform *= Matrix.CreateRotationY(this.rotation / 30);
+
             this.model.CopyAbsoluteBoneTransformsTo(transforms);
 
             // Draw the model. A model can have multiple meshes, so loop.
