@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace OW
 {
@@ -17,8 +10,24 @@ namespace OW
     public class Game : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        public float aspectRatio;
-        public Vector3 cameraPosition = new Vector3(0.0f, 1000.0f, 300.0f);
+        protected float aspectRatio;
+        protected Camera camera;
+
+        /// <summary>
+        /// Returns the camera instance.
+        /// </summary>
+        public Camera Camera
+        {
+            get { return this.camera; }
+        }
+
+        /// <summary>
+        /// Returns the aspect ratio in float.
+        /// </summary>
+        public float AspectRatio
+        {
+            get { return this.aspectRatio; }
+        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -33,29 +42,29 @@ namespace OW
 
         public Game()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";          
+            this.Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            graphics.IsFullScreen = true;
+            //this.graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //this.graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //this.graphics.IsFullScreen = true;
+
+            this.graphics.PreferredBackBufferWidth = 1024;
+            this.graphics.PreferredBackBufferHeight = 768;
+
+            this.graphics.PreferMultiSampling = true;
+            this.graphics.ApplyChanges();
+
+            this.aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+
+            // Initialize the camera.
+            this.camera = new Camera(this);
+            this.Components.Add(this.camera);
 
             // Create one player instance.
             Player player = new Player(this);
             this.Components.Add(player);
             this.IsMouseVisible = true;
-        }
-
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
-            graphics.PreferMultiSampling = true;
-            graphics.ApplyChanges();
         }
 
         /// <summary>
